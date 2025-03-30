@@ -1,0 +1,5 @@
+--library sunaba
+--class-path assets
+--main Main
+--lua assets/main.lua
+-D lua-vanilla
