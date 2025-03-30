@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BXML FullScreen="true">
+    <Head>
+    </Head>
+    <Body>
+        <VBoxContainer Name="VBoxContainer" AnchorTop="$FILL_TOP_LEFT" AnchorBottom="$FILL_BOTTOM_RIGHT" AnchorLeft="$FILL_TOP_LEFT" AnchorRight="$FILL_BOTTOM_RIGHT">
+            <!--Control Name="ToolBarControl" AnchorTop="1" AnchorBottom="$FILL_TOP_LEFT" OffsetTop="0" OffsetBottom="40" CustomMinimumSize="0,30">
+                <HBoxContainer Name="LeftHBoxContainer" AnchorTop="$FILL_TOP_LEFT" AnchorBottom="$FILL_BOTTOM_RIGHT" AnchorLeft="$FILL_TOP_LEFT" AnchorRight="0">
+                    <!Control Name="MenuBarControl">
+                        <MenuBar Name="MenuBar" AnchorTop="$FILL_TOP_LEFT" AnchorBottom="$FILL_BOTTOM_RIGHT" AnchorLeft="$FILL_TOP_LEFT" AnchorRight="$FILL_BOTTOM_RIGHT" OffsetTop="5" OffsetLeft="5">
+                            <PopupMenu Name="File">
+                                <MenuItem Label="Save File" Icon="assets://FugueIcons/icons/disk.png"/>
+                                <MenuItem Label="" Separator="true"/>
+                                <MenuItem Label="Undo" Icon="assets://FugueIcons/icons/arrow-curve-180-left.png"/>
+                                <MenuItem Label="Redo" Icon="assets://FugueIcons/icons/arrow-curve.png"/>
+                            </PopupMenu>
+                            <PopupMenu Name="Edit">
+                            </PopupMenu>
+                        </MenuBar>
+                    </Control>
+                    <Button Name="SaveFile" IconAlignment="Center" Icon="assets://FugueIcons/icons/disk.png" Flat="true" CustomMinimumSize="35,35"/>
+                    <MenuButton Name="Edit" Text="Edit" Flat="true" CustomMinimumSize="35,35">
+                </HBoxContainer>
+            </Control-->
+            <Control Name="CodeEditControl" SizeFlagsVertical="ExpandFill">
+                <CodeEdit Name="CodeEdit" AnchorTop="$FILL_TOP_LEFT" AnchorBottom="$FILL_BOTTOM_RIGHT" AnchorLeft="$FILL_TOP_LEFT" AnchorRight="$FILL_BOTTOM_RIGHT" GuttersDrawLineNumbers="true" GuttersDrawFoldGutter="true" CodeCompletionEnabled="true" IndentAutomatic="true" AutoBraceCompletionEnabled="true" DrawControlChars="true" DrawTabs="true" />
+            </Control>
+            <Control Name="StatusControl" AnchorTop="1" AnchorBottom="$FILL_TOP_LEFT" OffsetTop="0" OffsetBottom="40" CustomMinimumSize="0,30">
+                <HBoxContainer Name="RightHBoxContainer" AnchorTop="$FILL_TOP_LEFT" AnchorBottom="$FILL_BOTTOM_RIGHT" AnchorLeft="0.25" AnchorRight="$FILL_BOTTOM_RIGHT" OffsetRight="5" Alignment="End">
+                    <Label Name="LineAndColumnLabel" Text="Ln 0, Col 0"/>
+                    <Control CustomMinimumSize="5,5"/>
+                </HBoxContainer>
+            </Control>
+        </VBoxContainer>
+    </Body>
+</BXML>

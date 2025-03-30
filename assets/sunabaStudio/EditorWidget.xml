@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BXML FullScreen="true">
+    <Head>
+    </Head>
+    <Body>
+        <Panel
+                AnchorTop="0"
+                AnchorBottom="1"
+                AnchorLeft="0"
+                AnchorRight="1"
+                OffsetTop="-10"
+                OffsetBottom="10"
+                OffsetLeft="-10"
+                OffsetRight="10"/>
+        <Control
+                Name="Control"
+                AnchorTop="0"
+                AnchorBottom="1"
+                AnchorLeft="0"
+                AnchorRight="1">
+            <VBoxContainer
+                    Name="VBoxContainer"
+                    AnchorTop="0"
+                    AnchorBottom="1"
+                    AnchorLeft="0"
+                    AnchorRight="1">
+                <Control
+                        Name="MenuBarControl"
+                        CustomMinimumSize="0,25">
+
+                    <MenuBar Name="MenuBar" AnchorTop="$FILL_TOP_LEFT" AnchorBottom="$FILL_BOTTOM_RIGHT" AnchorLeft="$FILL_TOP_LEFT" AnchorRight="$FILL_BOTTOM_RIGHT" OffsetTop="0" OffsetLeft="5">
+                        <PopupMenu Name="File">
+                            <MenuItem Label="New Project" Icon="app://FugueIcons/icons/folder--plus.png"/>
+                            <MenuItem Label="Open Project" Icon="app://FugueIcons/icons/folder-open-document.png"/>
+                            <MenuItem Label="Save File" Icon="app://FugueIcons/icons/disk.png"/>
+                            <MenuItem Label="" Separator="true"/>
+                            <MenuItem Label="Quit" Icon="app://FugueIcons/icons/door-open-out.png"/>
+                        </PopupMenu>
+                        <PopupMenu Name="Edit">
+                            <MenuItem Label="Undo" Icon="app://FugueIcons/icons/arrow-curve-180-left.png"/>
+                            <MenuItem Label="Redo" Icon="app://FugueIcons/icons/arrow-curve.png"/>
+                            <MenuItem Label="Cut" Icon="app://FugueIcons/icons/scissors.png"/>
+                            <MenuItem Label="Copy" Icon="app://FugueIcons/icons/document-copy.png"/>
+                            <MenuItem Label="Paste" Icon="app://FugueIcons/icons/clipboard.png"/>
+                        </PopupMenu>
+                        <!--PopupMenu Name="Tools">
+                        </PopupMenu-->
+                        <PopupMenu Name="Help">
+                            <MenuItem Label="About BoltStudio" Icon="app://FugueIcons/icons/information-italic.png"/>
+                        </PopupMenu>
+                    </MenuBar>
+                </Control>
+                <Control Name="Toolbar" AnchorTop="1" AnchorBottom="$FILL_TOP_LEFT" OffsetTop="0" OffsetBottom="40" CustomMinimumSize="0,30">
+                    <!-- a control within a control ? -->
+                    <Control Name="Control" AnchorTop="$FILL_TOP_LEFT" AnchorBottom="$FILL_BOTTOM_RIGHT" AnchorLeft="$FILL_TOP_LEFT" AnchorRight="$FILL_BOTTOM_RIGHT" OffsetLeft="5">
+                        <HBoxContainer Name="LeftToolbar" AnchorTop="$FILL_TOP_LEFT" AnchorBottom="$FILL_BOTTOM_RIGHT" AnchorLeft="$FILL_TOP_LEFT" AnchorRight="0">
+                            <Button Name="NewProject" IconAlignment="Center" Icon="app://FugueIcons/icons/folder--plus.png" Flat="true" CustomMinimumSize="30,30"/>
+                            <Button Name="OpenProject" IconAlignment="Center" Icon="app://FugueIcons/icons/folder-open-document.png" Flat="true" CustomMinimumSize="30,30"/>
+                            <Button Name="SaveFile" IconAlignment="Center" Icon="app://FugueIcons/icons/disk.png" Flat="true" CustomMinimumSize="30,30"/>
+                            <VSeperator/>
+                        </HBoxContainer>
+                        <HBoxContainer Name="RightToolbar" AnchorTop="$FILL_TOP_LEFT" AnchorBottom="$FILL_BOTTOM_RIGHT" AnchorLeft="0.25" AnchorRight="$FILL_BOTTOM_RIGHT" OffsetRight="5" Alignment="End">
+                            <!--CheckBox Name="PlayInFullscreenCheck" IconAlignment="Center" Text="Play In Fullscreen" Flat="true" CustomMinimumSize="30,30"/>
+                            <Button Name="Play" IconAlignment="Center" Icon="app://FugueIcons/icons/control.png" Flat="true" CustomMinimumSize="30,30"/>
+                            <Button Name="Pause" IconAlignment="Center" Icon="app://FugueIcons/icons/control-pause.png" Flat="true" CustomMinimumSize="30,30"/>
+                            <Button Name="Stop" IconAlignment="Center" Icon="app://FugueIcons/icons/control-stop-square.png" Flat="true" CustomMinimumSize="30,30"/-->
+                            <Control CustomMinimumSize="5,5"/>
+                        </HBoxContainer>
+                    </Control>
+                </Control>
+                <HSplitContainer
+                        Name="HSplitContainer"
+                        SizeFlagsVertical="3"
+                        SplitOffset="250">
+                    <VSplitContainer Name="VSplitContainer" AnchorTop="$FILL_TOP_LEFT" AnchorBottom="$FILL_BOTTOM_RIGHT" AnchorLeft="$FILL_TOP_LEFT" AnchorRight="$FILL_BOTTOM_RIGHT" SplitOffset="250">
+                        <TabManager Name="ContentView" SizeFlagsVertical="ExpandFill"/>
+                        <TabContainer Name="Dock" CustomMinimumSize="0,200">
+                            <Control Name="Explorer">
+                                <VBoxContainer 
+                                        Name="VBoxContainer"
+                                        AnchorTop="0"
+                                        AnchorBottom="1"
+                                        AnchorLeft="0"
+                                        AnchorRight="1">
+                                    <Control 
+                                        Name="Toolbar"
+                                        CustomMinimumSize="0,25">
+                                        <HBoxContainer
+                                                Name="HBoxContainer"
+                                                AnchorTop="0"
+                                                AnchorBottom="1"
+                                                AnchorLeft="0"
+                                                AnchorRight="1">
+                                            <Button Name="Back" IconAlignment="Center" Icon="app://FugueIcons/icons/arrow-180.png" Flat="true" CustomMinimumSize="25,25"/>
+                                            <Button Name="Forward" IconAlignment="Center" Icon="app://FugueIcons/icons/arrow.png" Flat="true" CustomMinimumSize="25,25"/>
+                                            <Button Name="Up" IconAlignment="Center" Icon="app://FugueIcons/icons/arrow-090.png" Flat="true" CustomMinimumSize="25,25"/>
+                                            <Button Name="Refresh" IconAlignment="Center" Icon="app://FugueIcons/icons/arrow-circle-315.png" Flat="true" CustomMinimumSize="25,25"/>
+                                            <MenuButton Name="New" IconAlignment="Center" Icon="app://FugueIcons/icons/plus-button.png" Flat="true" CustomMinimumSize="25,25"/>
+                                            <LineEdit Name="AddressBar" PlaceholderText="path://to/folder/" SizeFlagsHorizontal="ExpandFill"/>
+                                            <LineEdit Name="SearchBar" PlaceholderText="Search for files" RightIcon="app://FugueIcons/icons/magnifier.png" CustomMinimumSize="200,0"/>
+                                        </HBoxContainer>
+                                    </Control>
+                                    <Control/>
+                                    <HSplitContainer Name="HSplitContainer" SizeFlagsVertical="ExpandFill">
+                                        <Tree Name="DirTree" CustomMinimumSize="200,0"/>
+                                        <ItemList Name="CurrentDirItemList" SizeFlagsHorizontal="ExpandFill" FixedIconSize="32,32" FixedColumnWidth="96" IconMode="Top" SelectMode="Single" MaxColumns="0"/>
+                                    </HSplitContainer>
+                                </VBoxContainer>
+                            </Control>
+                        </TabContainer>
+                    </VSplitContainer>
+                </HSplitContainer>
+            </VBoxContainer>
+        </Control>
+    </Body>
+</BXML>

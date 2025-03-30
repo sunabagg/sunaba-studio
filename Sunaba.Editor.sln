@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunaba.Editor", "Sunaba.Editor.csproj", "{A5EE0B8B-9BC0-40B9-A1CD-C7DECF219CCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5EE0B8B-9BC0-40B9-A1CD-C7DECF219CCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5EE0B8B-9BC0-40B9-A1CD-C7DECF219CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5EE0B8B-9BC0-40B9-A1CD-C7DECF219CCF}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{A5EE0B8B-9BC0-40B9-A1CD-C7DECF219CCF}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{A5EE0B8B-9BC0-40B9-A1CD-C7DECF219CCF}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{A5EE0B8B-9BC0-40B9-A1CD-C7DECF219CCF}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal
