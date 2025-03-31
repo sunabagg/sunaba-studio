@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Sunaba Studio"
+config/version="0.7.0"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0.14902, 0.14902, 0.14902, 1)
@@ -42,3 +43,5 @@ theme/custom="res://addons/lite/light.tres"
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+textures/vram_compression/import_s3tc_bptc=true
+textures/vram_compression/import_etc2_astc=true
