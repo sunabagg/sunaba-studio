@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0.14902, 0.14902, 0.14902, 1)
 boot_splash/fullsize=false
 boot_splash/image="res://splashscreen.png"
-config/icon="uid://4l4uefsl42b8"
+config/icon="uid://dtetvqn6l2qkh"
 config/windows_native_icon="res://icon.ico"
 
 [display]
