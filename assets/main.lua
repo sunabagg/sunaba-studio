@@ -3769,6 +3769,12 @@ __sunabaStudio_Explorer.prototype.init = function(self)
   elseif _hx_result ~= _hx_pcall_default then
     return _hx_result
   end;
+  if (godot.OS.getName() == "macOS") then 
+    local menuBarControl = self.editorWidget.document:getObject("Control/VBoxContainer/MenuBarControl");
+    if (menuBarControl ~= nil) then 
+      menuBarControl.customMinimumSize = __sunaba_godot__Vector2_Vector2_Impl_._new(0, 1);
+    end;
+  end;
 end
 __sunabaStudio_Explorer.prototype.buildRoot = function(self) 
   local root = __sunabaStudio_explorer_DirIndex.new("project://");
@@ -4067,7 +4073,7 @@ __sunabaStudio_Explorer.prototype.onItemListItemActivated = function(self,index)
   local pathVar = self.itemList:getItemMetadata(index);
   local path = pathVar:asString();
   if (self.itemList:getItemIcon(index) == self.folderTexture) then 
-    __haxe_Log.trace(Std.string("open dir: ") .. Std.string(path), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/Explorer.hx",lineNumber=437,className="sunabaStudio.Explorer",methodName="onItemListItemActivated"}));
+    __haxe_Log.trace(Std.string("open dir: ") .. Std.string(path), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/Explorer.hx",lineNumber=447,className="sunabaStudio.Explorer",methodName="onItemListItemActivated"}));
     self.previousDirs:push(self.selectedPath);
     self:updatePath(path);
   else

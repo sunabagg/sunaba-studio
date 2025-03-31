@@ -1,10 +1,13 @@
 package sunabaStudio;
 
+import sunaba.godot.Control;
+import sunaba.godot.OS;
 import sunaba.godot.NodePath;
 import sunaba.core.LuaEvent;
 import sunaba.godot.Variant;
 import sunaba.ToVariant;
 import sunaba.godot.Vector2i;
+import sunaba.godot.Vector2;
 import sunaba.godot.Button;
 import sunaba.godot.MenuButton;
 import sunaba.godot.Tree;
@@ -176,6 +179,13 @@ class Explorer {
         }
         catch (e) {
             Sys.println(e + " line : 158");}
+
+        if (OS.getName() == "macOS") {
+            var menuBarControl : Control = cast editorWidget.document.getObject("Control/VBoxContainer/MenuBarControl");
+            if (menuBarControl != null) {
+                menuBarControl.customMinimumSize = new Vector2(0, 1);
+            }
+        }
     }
 
     public function buildRoot() : DirIndex {

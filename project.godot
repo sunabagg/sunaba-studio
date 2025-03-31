@@ -17,12 +17,15 @@ boot_splash/bg_color=Color(0.14902, 0.14902, 0.14902, 1)
 boot_splash/fullsize=false
 boot_splash/image="res://splashscreen.png"
 config/icon="uid://dtetvqn6l2qkh"
+config/macos_native_icon="res://SunabaStudioIconMac.icns"
 config/windows_native_icon="res://icon.ico"
+config/icon.macos="uid://bk7btadsfba7o"
 
 [display]
 
 window/size/mode=2
 window/subwindows/embed_subwindows=false
+window/dpi/allow_hidpi=false
 
 [dotnet]
 
