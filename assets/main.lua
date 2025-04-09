@@ -279,6 +279,15 @@ __sunaba_godot_LineEditTooltipAutoTranslateMode = _hx_e()
 __sunaba_godot_LineEditFocusMode = _hx_e()
 __sunaba_godot_LineEditMouseFilter = _hx_e()
 __sunaba_godot_LineEditMouseDefaultCursorShape = _hx_e()
+__sunaba_godot_MenuBarLayoutDirection = _hx_e()
+__sunaba_godot_MenuBarGrowHorizontal = _hx_e()
+__sunaba_godot_MenuBarGrowVertical = _hx_e()
+__sunaba_godot_MenuBarSizeFlagsHorizontal = _hx_e()
+__sunaba_godot_MenuBarSizeFlagsVertical = _hx_e()
+__sunaba_godot_MenuBarTooltipAutoTranslateMode = _hx_e()
+__sunaba_godot_MenuBarFocusMode = _hx_e()
+__sunaba_godot_MenuBarMouseFilter = _hx_e()
+__sunaba_godot_MenuBarMouseDefaultCursorShape = _hx_e()
 __sunaba_godot_MenuButtonAlignment = _hx_e()
 __sunaba_godot_MenuButtonTextOverrunBehavior = _hx_e()
 __sunaba_godot_MenuButtonAutowrapMode = _hx_e()
@@ -1765,6 +1774,33 @@ __sunaba_godot_LineEditMouseFilter.__name__ = true
 
 __sunaba_godot_LineEditMouseDefaultCursorShape.new = {}
 __sunaba_godot_LineEditMouseDefaultCursorShape.__name__ = true
+
+__sunaba_godot_MenuBarLayoutDirection.new = {}
+__sunaba_godot_MenuBarLayoutDirection.__name__ = true
+
+__sunaba_godot_MenuBarGrowHorizontal.new = {}
+__sunaba_godot_MenuBarGrowHorizontal.__name__ = true
+
+__sunaba_godot_MenuBarGrowVertical.new = {}
+__sunaba_godot_MenuBarGrowVertical.__name__ = true
+
+__sunaba_godot_MenuBarSizeFlagsHorizontal.new = {}
+__sunaba_godot_MenuBarSizeFlagsHorizontal.__name__ = true
+
+__sunaba_godot_MenuBarSizeFlagsVertical.new = {}
+__sunaba_godot_MenuBarSizeFlagsVertical.__name__ = true
+
+__sunaba_godot_MenuBarTooltipAutoTranslateMode.new = {}
+__sunaba_godot_MenuBarTooltipAutoTranslateMode.__name__ = true
+
+__sunaba_godot_MenuBarFocusMode.new = {}
+__sunaba_godot_MenuBarFocusMode.__name__ = true
+
+__sunaba_godot_MenuBarMouseFilter.new = {}
+__sunaba_godot_MenuBarMouseFilter.__name__ = true
+
+__sunaba_godot_MenuBarMouseDefaultCursorShape.new = {}
+__sunaba_godot_MenuBarMouseDefaultCursorShape.__name__ = true
 
 __sunaba_godot_MenuButtonAlignment.new = {}
 __sunaba_godot_MenuButtonAlignment.__name__ = true
@@ -3378,6 +3414,11 @@ __sunabaStudio_EditorWidget.prototype.init = function(self)
   _G.print(Std.string(self.fileMenu:toString()));
   self.editMenu = self.document:getObject("Control/VBoxContainer/MenuBarControl/MenuBar/Edit");
   self.helpMenu = self.document:getObject("Control/VBoxContainer/MenuBarControl/MenuBar/Help");
+  if (godot.OS.getName() == "macOS") then 
+    local menuBar = self.document:getObject("Control/VBoxContainer/MenuBarControl/MenuBar");
+    local helpMeuIndex = self.helpMenu:getIndex();
+    menuBar:setMenuHidden(helpMeuIndex, true);
+  end;
   local _hx_status, _hx_result = pcall(function() 
   
       local func = function(id) 
@@ -3392,7 +3433,7 @@ __sunabaStudio_EditorWidget.prototype.init = function(self)
   elseif not _hx_status then 
     local _g = _hx_result;
     local e = __haxe_Exception.caught(_g);
-    __haxe_Log.trace(e, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=69,className="sunabaStudio.EditorWidget",methodName="init"}));
+    __haxe_Log.trace(e, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=76,className="sunabaStudio.EditorWidget",methodName="init"}));
   elseif _hx_result ~= _hx_pcall_default then
     return _hx_result
   end;
@@ -3485,13 +3526,13 @@ __sunabaStudio_EditorWidget.prototype.openProject = function(self,dirPath)
   elseif not _hx_status then 
     local _g = _hx_result;
     local e = __haxe_Exception.caught(_g):unwrap();
-    __haxe_Log.trace(Std.string("Error: ") .. Std.string(Std.string(e)), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=139,className="sunabaStudio.EditorWidget",methodName="openProject"}));
+    __haxe_Log.trace(Std.string("Error: ") .. Std.string(Std.string(e)), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=146,className="sunabaStudio.EditorWidget",methodName="openProject"}));
   elseif _hx_result ~= _hx_pcall_default then
     return _hx_result
   end;
 end
 __sunabaStudio_EditorWidget.prototype.openProjectDialog = function(self) 
-  __haxe_Log.trace("Open Project", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=144,className="sunabaStudio.EditorWidget",methodName="openProjectDialog"}));
+  __haxe_Log.trace("Open Project", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=151,className="sunabaStudio.EditorWidget",methodName="openProjectDialog"}));
   local fileDialogSize = godot.Vector2i.__new(550, 350);
   self.openFileDialog:popupCentered(fileDialogSize);
 end
@@ -5140,6 +5181,106 @@ local _hx_static_init = function()
   __sunaba_godot_LineEditMouseDefaultCursorShape.Hsplit = 15;
   
   __sunaba_godot_LineEditMouseDefaultCursorShape.Help = 16;
+  
+  __sunaba_godot_MenuBarLayoutDirection.Inherited = 0;
+  
+  __sunaba_godot_MenuBarLayoutDirection.ApplicationLocale = 1;
+  
+  __sunaba_godot_MenuBarLayoutDirection.Ltr = 2;
+  
+  __sunaba_godot_MenuBarLayoutDirection.Rtl = 3;
+  
+  __sunaba_godot_MenuBarLayoutDirection.SystemLocale = 4;
+  
+  __sunaba_godot_MenuBarLayoutDirection.Max = 5;
+  
+  __sunaba_godot_MenuBarGrowHorizontal.Begin = 0;
+  
+  __sunaba_godot_MenuBarGrowHorizontal.End = 1;
+  
+  __sunaba_godot_MenuBarGrowHorizontal.Both = 2;
+  
+  __sunaba_godot_MenuBarGrowVertical.Begin = 0;
+  
+  __sunaba_godot_MenuBarGrowVertical.End = 1;
+  
+  __sunaba_godot_MenuBarGrowVertical.Both = 2;
+  
+  __sunaba_godot_MenuBarSizeFlagsHorizontal.ShrinkBegin = 0;
+  
+  __sunaba_godot_MenuBarSizeFlagsHorizontal.Fill = 1;
+  
+  __sunaba_godot_MenuBarSizeFlagsHorizontal.Expand = 2;
+  
+  __sunaba_godot_MenuBarSizeFlagsHorizontal.ExpandFill = 3;
+  
+  __sunaba_godot_MenuBarSizeFlagsHorizontal.ShrinkCenter = 4;
+  
+  __sunaba_godot_MenuBarSizeFlagsHorizontal.ShrinkEnd = 8;
+  
+  __sunaba_godot_MenuBarSizeFlagsVertical.ShrinkBegin = 0;
+  
+  __sunaba_godot_MenuBarSizeFlagsVertical.Fill = 1;
+  
+  __sunaba_godot_MenuBarSizeFlagsVertical.Expand = 2;
+  
+  __sunaba_godot_MenuBarSizeFlagsVertical.ExpandFill = 3;
+  
+  __sunaba_godot_MenuBarSizeFlagsVertical.ShrinkCenter = 4;
+  
+  __sunaba_godot_MenuBarSizeFlagsVertical.ShrinkEnd = 8;
+  
+  __sunaba_godot_MenuBarTooltipAutoTranslateMode.Inherit = 0;
+  
+  __sunaba_godot_MenuBarTooltipAutoTranslateMode.Always = 1;
+  
+  __sunaba_godot_MenuBarTooltipAutoTranslateMode.Disabled = 2;
+  
+  __sunaba_godot_MenuBarFocusMode.None = 0;
+  
+  __sunaba_godot_MenuBarFocusMode.Click = 1;
+  
+  __sunaba_godot_MenuBarFocusMode.All = 2;
+  
+  __sunaba_godot_MenuBarMouseFilter.Stop = 0;
+  
+  __sunaba_godot_MenuBarMouseFilter.Pass = 1;
+  
+  __sunaba_godot_MenuBarMouseFilter.Ignore = 2;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Arrow = 0;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Ibeam = 1;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.PointingHand = 2;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Cross = 3;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Wait = 4;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Busy = 5;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Drag = 6;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.CanDrop = 7;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Forbidden = 8;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Vsize = 9;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Hsize = 10;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Bdiagsize = 11;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Fdiagsize = 12;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Move = 13;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Vsplit = 14;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Hsplit = 15;
+  
+  __sunaba_godot_MenuBarMouseDefaultCursorShape.Help = 16;
   
   __sunaba_godot_MenuButtonAlignment.Left = 0;
   

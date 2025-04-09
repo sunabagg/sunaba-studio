@@ -1,5 +1,6 @@
 package sunabaStudio;
 
+import sunaba.godot.MenuBar;
 import sunaba.godot.OS;
 import lua.Table;
 import sunaba.ToVariant;
@@ -57,6 +58,12 @@ class EditorWidget extends Widget {
         Sys.println(fileMenu.toString());
         editMenu = cast document.getObject("Control/VBoxContainer/MenuBarControl/MenuBar/Edit");
         helpMenu = cast document.getObject("Control/VBoxContainer/MenuBarControl/MenuBar/Help");
+
+        if (OS.getName() == "macOS") {
+            var menuBar : MenuBar = cast document.getObject("Control/VBoxContainer/MenuBarControl/MenuBar");
+            var helpMeuIndex = helpMenu.getIndex();
+            menuBar.setMenuHidden(helpMeuIndex, true);
+        }
 
         try {
             var func = (id : Int) -> onFileMenuPressed(id);
