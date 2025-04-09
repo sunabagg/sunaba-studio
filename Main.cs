@@ -11,7 +11,8 @@ public partial class Main : LuaNode
         UserData.RegisterType<Main>();
     }
     
-    public override void _Ready() {
+    public override void _Ready()
+    {
         try
         {
             var path = OS.GetExecutablePath().GetBaseDir();
@@ -24,6 +25,9 @@ public partial class Main : LuaNode
             StartFromPath(assetPath);
             
             var window = GetWindow();
+            var screen = window.CurrentScreen;
+            var scale = DisplayServer.ScreenGetScale(screen);
+            window.ContentScaleFactor = scale;
             //window.Size = new Vector2I(1152, 648);
             //window.Borderless = false;
             //window.Unresizable = false;
