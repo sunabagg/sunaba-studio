@@ -82,23 +82,39 @@ class EditorWidget extends Widget {
         iconImage.loadPngFromBuffer(ioInterface.loadBytes("app://about-icon.png"));
         var iconTexture = ImageTexture.createFromImage(iconImage);
         aboutDialog.setIcon(iconTexture);
-        aboutDialog.text += "Sunaba Studio\n";
+        aboutDialog.text = "Sunaba Studio\n";
         aboutDialog.text += "Version: 0.7.0\n";
         aboutDialog.text += "Copyright (C) 2022-2025 mintkat\n";
         document.addChild(aboutDialog);
         aboutDialog.hide();
-
-        //LuaEvent.add(helpMenu.idPressed, (id : Int) -> {
-        //    if (id == 0) {
-        //        aboutDialog.popupCentered(cast aboutDialog.size);
-        //    }
-        //});
-
-        //var aboutFuncMacOS = function() {
-        //    aboutDialog.popupCentered(cast aboutDialog.size);
-        //}
+        //var scaleFactor = ;
+        var aboutDialogSize : GdVector2i = cast aboutDialog.minSize;
+            var sizeX = aboutDialogSize.x;
+            sizeX = Std.int(sizeX * aboutDialog.contentScaleFactor);
+            aboutDialogSize.x = sizeX;
+            aboutDialog.minSize = aboutDialogSize;
         
-        //untyped rootNode.aboutFunction = aboutFuncMacOS;
+
+        var helpMenuFunc = (id : Int) -> {
+            if (id == 0) {
+                var aboutDialogSize : GdVector2i = cast aboutDialog.minSize;
+                var sizeX = aboutDialogSize.x;
+                sizeX = Std.int(sizeX * aboutDialog.contentScaleFactor);
+                aboutDialogSize.x = sizeX;
+                aboutDialog.popupCentered(aboutDialogSize);
+            }
+        };
+        untyped __lua__("_G.addLuaFuncToIntEvent(self.helpMenu, 'IdPressed', helpMenuFunc)");
+
+        var aboutFuncMacOS = function() {
+            var aboutDialogSize : GdVector2i = cast aboutDialog.minSize;
+            var sizeX = aboutDialogSize.x;
+            sizeX = Std.int(sizeX * aboutDialog.contentScaleFactor);
+            aboutDialogSize.x = sizeX;
+            aboutDialog.popupCentered(aboutDialogSize);
+        }
+        
+        untyped rootNode.aboutFunction = aboutFuncMacOS;
 
         try {
             var func = (id : Int) -> onFileMenuPressed(id);

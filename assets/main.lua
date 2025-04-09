@@ -3426,14 +3426,36 @@ __sunabaStudio_EditorWidget.prototype.init = function(self)
   iconImage:loadPngFromBuffer(self.ioInterface:loadBytes("app://about-icon.png"));
   local iconTexture = godot.ImageTexture.createFromImage(iconImage);
   self.aboutDialog:setIcon(iconTexture);
-  local fh = self.aboutDialog;
-  fh.text = Std.string(fh.text) .. Std.string("Sunaba Studio\n");
+  self.aboutDialog.text = "Sunaba Studio\n";
   local fh = self.aboutDialog;
   fh.text = Std.string(fh.text) .. Std.string("Version: 0.7.0\n");
   local fh = self.aboutDialog;
   fh.text = Std.string(fh.text) .. Std.string("Copyright (C) 2022-2025 mintkat\n");
   self.document:addChild(self.aboutDialog);
   self.aboutDialog:hide();
+  local aboutDialogSize = self.aboutDialog.minSize;
+  local sizeX = aboutDialogSize.x;
+  sizeX = Std.int(sizeX * self.aboutDialog.contentScaleFactor);
+  aboutDialogSize.x = sizeX;
+  self.aboutDialog.minSize = aboutDialogSize;
+  local helpMenuFunc = function(id) 
+    if (id == 0) then 
+      local aboutDialogSize = _gthis.aboutDialog.minSize;
+      local sizeX = aboutDialogSize.x;
+      sizeX = Std.int(sizeX * _gthis.aboutDialog.contentScaleFactor);
+      aboutDialogSize.x = sizeX;
+      _gthis.aboutDialog:popupCentered(aboutDialogSize);
+    end;
+  end;
+  _G.addLuaFuncToIntEvent(self.helpMenu, 'IdPressed', helpMenuFunc);
+  local aboutFuncMacOS = function() 
+    local aboutDialogSize = _gthis.aboutDialog.minSize;
+    local sizeX = aboutDialogSize.x;
+    sizeX = Std.int(sizeX * _gthis.aboutDialog.contentScaleFactor);
+    aboutDialogSize.x = sizeX;
+    _gthis.aboutDialog:popupCentered(aboutDialogSize);
+  end;
+  self.rootNode.aboutFunction = aboutFuncMacOS;
   local _hx_status, _hx_result = pcall(function() 
   
       local func = function(id) 
@@ -3448,7 +3470,7 @@ __sunabaStudio_EditorWidget.prototype.init = function(self)
   elseif not _hx_status then 
     local _g = _hx_result;
     local e = __haxe_Exception.caught(_g);
-    __haxe_Log.trace(e, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=111,className="sunabaStudio.EditorWidget",methodName="init"}));
+    __haxe_Log.trace(e, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=127,className="sunabaStudio.EditorWidget",methodName="init"}));
   elseif _hx_result ~= _hx_pcall_default then
     return _hx_result
   end;
@@ -3541,13 +3563,13 @@ __sunabaStudio_EditorWidget.prototype.openProject = function(self,dirPath)
   elseif not _hx_status then 
     local _g = _hx_result;
     local e = __haxe_Exception.caught(_g):unwrap();
-    __haxe_Log.trace(Std.string("Error: ") .. Std.string(Std.string(e)), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=181,className="sunabaStudio.EditorWidget",methodName="openProject"}));
+    __haxe_Log.trace(Std.string("Error: ") .. Std.string(Std.string(e)), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=197,className="sunabaStudio.EditorWidget",methodName="openProject"}));
   elseif _hx_result ~= _hx_pcall_default then
     return _hx_result
   end;
 end
 __sunabaStudio_EditorWidget.prototype.openProjectDialog = function(self) 
-  __haxe_Log.trace("Open Project", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=186,className="sunabaStudio.EditorWidget",methodName="openProjectDialog"}));
+  __haxe_Log.trace("Open Project", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=202,className="sunabaStudio.EditorWidget",methodName="openProjectDialog"}));
   local fileDialogSize = godot.Vector2i.__new(550, 350);
   self.openFileDialog:popupCentered(fileDialogSize);
 end
