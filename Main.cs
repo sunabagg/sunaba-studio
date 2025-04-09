@@ -1,9 +1,12 @@
 using Godot;
 using System;
+using MoonSharp.Interpreter;
 using Sunaba.Core;
 
 public partial class Main : LuaNode
 {
+    public Closure AboutFunction;
+    
     public override void _Ready() {
         try
         {
@@ -35,6 +38,14 @@ public partial class Main : LuaNode
             dialog.Title = "Error";
             AddChild(dialog);
             dialog.PopupCentered();
+        }
+    }
+
+    public override void _Notification(int what)
+    {
+        if (what == NotificationWMAbout)
+        {
+            AboutFunction.Call();
         }
     }
 }
