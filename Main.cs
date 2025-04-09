@@ -5,7 +5,7 @@ using Sunaba.Core;
 
 public partial class Main : LuaNode
 {
-    public Closure AboutFunction;
+    public Closure? AboutFunction;
     
     public override void _Ready() {
         try
@@ -45,7 +45,9 @@ public partial class Main : LuaNode
     {
         if (what == NotificationWMAbout)
         {
-            AboutFunction.Call();
+            if (AboutFunction != null) {
+                AboutFunction.Call();
+            }
         }
     }
 }
