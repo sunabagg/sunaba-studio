@@ -3435,8 +3435,7 @@ __sunabaStudio_EditorWidget.prototype.init = function(self)
   self.aboutDialog:hide();
   local helpMenuFunc = function(id) 
     if (id == 0) then 
-      local aboutDialogSize = _gthis.aboutDialog.minSize;
-      _gthis.aboutDialog:popupCentered(aboutDialogSize);
+      _gthis.aboutDialog:popupCentered(_gthis.aboutDialog.minSize);
     end;
   end;
   _G.addLuaFuncToIntEvent(self.helpMenu, 'IdPressed', helpMenuFunc);
@@ -3459,7 +3458,7 @@ __sunabaStudio_EditorWidget.prototype.init = function(self)
   elseif not _hx_status then 
     local _g = _hx_result;
     local e = __haxe_Exception.caught(_g);
-    __haxe_Log.trace(e, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=115,className="sunabaStudio.EditorWidget",methodName="init"}));
+    __haxe_Log.trace(e, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=114,className="sunabaStudio.EditorWidget",methodName="init"}));
   elseif _hx_result ~= _hx_pcall_default then
     return _hx_result
   end;
@@ -3552,13 +3551,13 @@ __sunabaStudio_EditorWidget.prototype.openProject = function(self,dirPath)
   elseif not _hx_status then 
     local _g = _hx_result;
     local e = __haxe_Exception.caught(_g):unwrap();
-    __haxe_Log.trace(Std.string("Error: ") .. Std.string(Std.string(e)), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=185,className="sunabaStudio.EditorWidget",methodName="openProject"}));
+    __haxe_Log.trace(Std.string("Error: ") .. Std.string(Std.string(e)), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=184,className="sunabaStudio.EditorWidget",methodName="openProject"}));
   elseif _hx_result ~= _hx_pcall_default then
     return _hx_result
   end;
 end
 __sunabaStudio_EditorWidget.prototype.openProjectDialog = function(self) 
-  __haxe_Log.trace("Open Project", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=190,className="sunabaStudio.EditorWidget",methodName="openProjectDialog"}));
+  __haxe_Log.trace("Open Project", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=189,className="sunabaStudio.EditorWidget",methodName="openProjectDialog"}));
   local fileDialogSize = godot.Vector2i.__new(550, 350);
   self.openFileDialog:popupCentered(fileDialogSize);
 end

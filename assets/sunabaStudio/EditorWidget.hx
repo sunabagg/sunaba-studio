@@ -91,8 +91,7 @@ class EditorWidget extends Widget {
 
         var helpMenuFunc = (id : Int) -> {
             if (id == 0) {
-                var aboutDialogSize : GdVector2i = cast aboutDialog.minSize;
-                aboutDialog.popupCentered(aboutDialogSize);
+                aboutDialog.popupCentered(cast aboutDialog.minSize);
             }
         };
         untyped __lua__("_G.addLuaFuncToIntEvent(self.helpMenu, 'IdPressed', helpMenuFunc)");
