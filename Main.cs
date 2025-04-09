@@ -6,6 +6,10 @@ using Sunaba.Core;
 public partial class Main : LuaNode
 {
     public Closure? AboutFunction;
+
+    public Main() : base() {
+        UserData.RegisterType<Main>();
+    }
     
     public override void _Ready() {
         try
