@@ -88,19 +88,10 @@ class EditorWidget extends Widget {
         document.addChild(aboutDialog);
         aboutDialog.hide();
         //var scaleFactor = ;
-        var aboutDialogSize : GdVector2i = cast aboutDialog.minSize;
-            var sizeX = aboutDialogSize.x;
-            sizeX = Std.int(sizeX * aboutDialog.contentScaleFactor);
-            aboutDialogSize.x = sizeX;
-            aboutDialog.minSize = aboutDialogSize;
-        
 
         var helpMenuFunc = (id : Int) -> {
             if (id == 0) {
                 var aboutDialogSize : GdVector2i = cast aboutDialog.minSize;
-                var sizeX = aboutDialogSize.x;
-                sizeX = Std.int(sizeX * aboutDialog.contentScaleFactor);
-                aboutDialogSize.x = sizeX;
                 aboutDialog.popupCentered(aboutDialogSize);
             }
         };
@@ -108,9 +99,6 @@ class EditorWidget extends Widget {
 
         var aboutFuncMacOS = function() {
             var aboutDialogSize : GdVector2i = cast aboutDialog.minSize;
-            var sizeX = aboutDialogSize.x;
-            sizeX = Std.int(sizeX * aboutDialog.contentScaleFactor);
-            aboutDialogSize.x = sizeX;
             aboutDialog.popupCentered(aboutDialogSize);
         }
         
