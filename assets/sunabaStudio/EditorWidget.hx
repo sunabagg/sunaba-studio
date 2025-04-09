@@ -1,5 +1,10 @@
 package sunabaStudio;
 
+import sunaba.godot.Vector2i;
+import sunaba.godot.Node;
+import sunaba.godot.Image;
+import sunaba.godot.ImageTexture;
+import sunaba.godot.AcceptDialog;
 import sunaba.godot.MenuBar;
 import sunaba.godot.OS;
 import lua.Table;
@@ -15,6 +20,7 @@ import sunaba.godot.GdVector2i;
 import sunaba.io.IoManager;
 import sunaba.godot.extensions.TabManager;
 import sunabaStudio.explorer.fileHandlers.HxFileHandler;
+import sunaba.godot.extensions.AcceptDialogPlus;
 
 class EditorWidget extends Widget {
     public var fileMenu: PopupMenu;
@@ -36,7 +42,12 @@ class EditorWidget extends Widget {
 
     public var children : Array<EditorChild> = new Array<EditorChild>();
 
+    var aboutDialog : AcceptDialogPlus;
+
+    var rootNode : Node;
+
     public override function init() {
+        rootNode = document.getParent();
         var plugins : Array<Plugin> = new Array<Plugin>();
         untyped __lua__("_G.plugins = self.plugins");
 
@@ -64,6 +75,30 @@ class EditorWidget extends Widget {
             var helpMeuIndex = helpMenu.getIndex();
             menuBar.setMenuHidden(helpMeuIndex, true);
         }
+
+        aboutDialog = new AcceptDialogPlus(DialogPlusType.Info);
+        aboutDialog.title = "About";
+        var iconImage = new Image();
+        iconImage.loadPngFromBuffer(ioInterface.loadBytes("app://about-icon.png"));
+        var iconTexture = ImageTexture.createFromImage(iconImage);
+        aboutDialog.setIcon(iconTexture);
+        aboutDialog.text += "Sunaba Studio\n";
+        aboutDialog.text += "Version: 0.7.0\n";
+        aboutDialog.text += "Copyright (C) 2022-2025 mintkat\n";
+        document.addChild(aboutDialog);
+        aboutDialog.hide();
+
+        //LuaEvent.add(helpMenu.idPressed, (id : Int) -> {
+        //    if (id == 0) {
+        //        aboutDialog.popupCentered(cast aboutDialog.size);
+        //    }
+        //});
+
+        //var aboutFuncMacOS = function() {
+        //    aboutDialog.popupCentered(cast aboutDialog.size);
+        //}
+        
+        //untyped rootNode.aboutFunction = aboutFuncMacOS;
 
         try {
             var func = (id : Int) -> onFileMenuPressed(id);

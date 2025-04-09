@@ -3376,6 +3376,7 @@ __sunabaStudio_EditorWidget.__name__ = true
 __sunabaStudio_EditorWidget.prototype = _hx_e();
 __sunabaStudio_EditorWidget.prototype.init = function(self) 
   local _gthis = self;
+  self.rootNode = self.document:getParent();
   local plugins = Array.new();
   _G.plugins = self.plugins;
   local globalPluginFileListTable = self.ioInterface:getFileList("app://plugins", "", false);
@@ -3419,6 +3420,20 @@ __sunabaStudio_EditorWidget.prototype.init = function(self)
     local helpMeuIndex = self.helpMenu:getIndex();
     menuBar:setMenuHidden(helpMeuIndex, true);
   end;
+  self.aboutDialog = gdx.AcceptDialogPlus.__new(2);
+  self.aboutDialog.title = "About";
+  local iconImage = godot.Image.__new();
+  iconImage:loadPngFromBuffer(self.ioInterface:loadBytes("app://about-icon.png"));
+  local iconTexture = godot.ImageTexture.createFromImage(iconImage);
+  self.aboutDialog:setIcon(iconTexture);
+  local fh = self.aboutDialog;
+  fh.text = Std.string(fh.text) .. Std.string("Sunaba Studio\n");
+  local fh = self.aboutDialog;
+  fh.text = Std.string(fh.text) .. Std.string("Version: 0.7.0\n");
+  local fh = self.aboutDialog;
+  fh.text = Std.string(fh.text) .. Std.string("Copyright (C) 2022-2025 mintkat\n");
+  self.document:addChild(self.aboutDialog);
+  self.aboutDialog:hide();
   local _hx_status, _hx_result = pcall(function() 
   
       local func = function(id) 
@@ -3433,7 +3448,7 @@ __sunabaStudio_EditorWidget.prototype.init = function(self)
   elseif not _hx_status then 
     local _g = _hx_result;
     local e = __haxe_Exception.caught(_g);
-    __haxe_Log.trace(e, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=76,className="sunabaStudio.EditorWidget",methodName="init"}));
+    __haxe_Log.trace(e, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=111,className="sunabaStudio.EditorWidget",methodName="init"}));
   elseif _hx_result ~= _hx_pcall_default then
     return _hx_result
   end;
@@ -3526,13 +3541,13 @@ __sunabaStudio_EditorWidget.prototype.openProject = function(self,dirPath)
   elseif not _hx_status then 
     local _g = _hx_result;
     local e = __haxe_Exception.caught(_g):unwrap();
-    __haxe_Log.trace(Std.string("Error: ") .. Std.string(Std.string(e)), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=146,className="sunabaStudio.EditorWidget",methodName="openProject"}));
+    __haxe_Log.trace(Std.string("Error: ") .. Std.string(Std.string(e)), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=181,className="sunabaStudio.EditorWidget",methodName="openProject"}));
   elseif _hx_result ~= _hx_pcall_default then
     return _hx_result
   end;
 end
 __sunabaStudio_EditorWidget.prototype.openProjectDialog = function(self) 
-  __haxe_Log.trace("Open Project", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=151,className="sunabaStudio.EditorWidget",methodName="openProjectDialog"}));
+  __haxe_Log.trace("Open Project", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/EditorWidget.hx",lineNumber=186,className="sunabaStudio.EditorWidget",methodName="openProjectDialog"}));
   local fileDialogSize = godot.Vector2i.__new(550, 350);
   self.openFileDialog:popupCentered(fileDialogSize);
 end
@@ -4114,7 +4129,7 @@ __sunabaStudio_Explorer.prototype.onItemListItemActivated = function(self,index)
   local pathVar = self.itemList:getItemMetadata(index);
   local path = pathVar:asString();
   if (self.itemList:getItemIcon(index) == self.folderTexture) then 
-    __haxe_Log.trace(Std.string("open dir: ") .. Std.string(path), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/Explorer.hx",lineNumber=447,className="sunabaStudio.Explorer",methodName="onItemListItemActivated"}));
+    __haxe_Log.trace(Std.string("open dir: ") .. Std.string(path), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="assets/sunabaStudio/Explorer.hx",lineNumber=448,className="sunabaStudio.Explorer",methodName="onItemListItemActivated"}));
     self.previousDirs:push(self.selectedPath);
     self:updatePath(path);
   else
