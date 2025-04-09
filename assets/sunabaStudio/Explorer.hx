@@ -180,7 +180,7 @@ class Explorer {
         catch (e) {
             Sys.println(e + " line : 158");}
 
-        // Why the fuck is this in the Explorer widget
+        // Why the fuck is this in the Explorer class
         if (OS.getName() == "macOS") {
             var menuBarControl : Control = cast editorWidget.document.getObject("Control/VBoxContainer/MenuBarControl");
             if (menuBarControl != null) {
