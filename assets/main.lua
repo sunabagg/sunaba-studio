@@ -3430,7 +3430,7 @@ __sunabaStudio_EditorWidget.prototype.init = function(self)
   local fh = self.aboutDialog;
   fh.text = Std.string(fh.text) .. Std.string("Version: 0.7.0\n");
   local fh = self.aboutDialog;
-  fh.text = Std.string(fh.text) .. Std.string("Copyright (C) 2022-2025 mintkat\n");
+  fh.text = Std.string(fh.text) .. Std.string("Copyright (C) 2022-2025 mintkat");
   self.document:addChild(self.aboutDialog);
   self.aboutDialog:hide();
   local helpMenuFunc = function(id) 

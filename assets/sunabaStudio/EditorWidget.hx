@@ -84,7 +84,7 @@ class EditorWidget extends Widget {
         aboutDialog.setIcon(iconTexture);
         aboutDialog.text = "Sunaba Studio\n";
         aboutDialog.text += "Version: 0.7.0\n";
-        aboutDialog.text += "Copyright (C) 2022-2025 mintkat\n";
+        aboutDialog.text += "Copyright (C) 2022-2025 mintkat";
         document.addChild(aboutDialog);
         aboutDialog.hide();
         //var scaleFactor = ;
